@@ -1,0 +1,18 @@
+{
+  "common": {
+    "actions": {
+      "login": "Masuk"
+    },
+    "terms": {
+      "email": "Email",
+      "password": "Kata sandi"
+    }
+  },
+  "mod": {
+    "auth": {
+      "login": {
+        "title": "AMBI: Sistem Inventori"
+      }
+    }
+  }
+}

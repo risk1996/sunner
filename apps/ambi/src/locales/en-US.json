@@ -1,0 +1,18 @@
+{
+  "common": {
+    "actions": {
+      "login": "Login"
+    },
+    "terms": {
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "mod": {
+    "auth": {
+      "login": {
+        "title": "AMBI: Inventory System"
+      }
+    }
+  }
+}
