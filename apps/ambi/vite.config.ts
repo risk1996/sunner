@@ -8,5 +8,9 @@ export default defineConfig({
     polyfillDynamicImport: false,
     target: 'esnext',
   },
+  define: {
+    global: 'window',
+    'process.env': process.env,
+  },
   plugins: [solidPlugin(), tsconfigPaths()],
 })

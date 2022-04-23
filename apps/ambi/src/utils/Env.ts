@@ -1,16 +1,3 @@
-declare global {
-  namespace NodeJS {
-    /* eslint-disable typescript-sort-keys/interface */
-
-    interface ProcessEnv {
-      readonly VITE_AUTH_URL: string
-      readonly VITE_AUTH_REALM: string
-      readonly VITE_AUTH_CLIENT: string
-    }
-    /* eslint-enable typescript-sort-keys/interface */
-  }
-}
-
 export default abstract class Env {
   private constructor() {}
 

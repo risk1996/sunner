@@ -13,6 +13,7 @@ import { useI18n } from '@solid-primitives/i18n'
 import { Asterisk, EnvelopeOpen } from 'phosphor-solid'
 import type { JSX } from 'solid-js'
 
+/** @deprecated Keycloak integration makes this obsolete */
 export default function LoginPage(): JSX.Element {
   const [t] = useI18n()
 
