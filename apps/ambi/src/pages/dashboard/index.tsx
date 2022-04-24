@@ -1,7 +1,8 @@
-import { Box, Button, Text } from '@hope-ui/solid'
+import { Button, Text } from '@hope-ui/solid'
 import type { JSX } from 'solid-js'
 import { createEffect, createResource, createSignal } from 'solid-js'
 
+import Layout from '@sunner/ambi/components/Layout'
 import { createAppDatabase } from '@sunner/ambi/db'
 import type { VendorDocument } from '@sunner/ambi/db/vendor'
 
@@ -26,7 +27,7 @@ export default function DashboardPage(): JSX.Element {
   const handleClearVendor = (): void => void database()?.vendors.remove()
 
   return (
-    <Box>
+    <Layout>
       <Text>{'Dashboard'}</Text>
       <Text>
         {'Vendor Count: '}
@@ -35,6 +36,6 @@ export default function DashboardPage(): JSX.Element {
 
       <Button onClick={handleAddVendor}>{'Add Vendor'}</Button>
       <Button onClick={handleClearVendor}>{'Remove Vendor'}</Button>
-    </Box>
+    </Layout>
   )
 }
