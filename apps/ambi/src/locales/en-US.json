@@ -1,11 +1,21 @@
 {
   "common": {
     "actions": {
+      "goToDashboard": "Go to Dashboard",
       "login": "Login"
     },
     "terms": {
+      "active": "Active",
+      "address": "Address",
       "email": "Email",
+      "id": "ID",
+      "name": "Name",
       "password": "Password"
+    }
+  },
+  "error": {
+    "notFound": {
+      "title": "Page not found"
     }
   },
   "mod": {
@@ -13,6 +23,9 @@
       "login": {
         "title": "AMBI: Inventory System"
       }
+    },
+    "dashboard": {
+      "title": "Dashboard"
     }
   }
 }

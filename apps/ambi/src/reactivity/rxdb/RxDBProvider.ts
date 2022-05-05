@@ -1,16 +1,13 @@
 import { createContextProvider } from '@solid-primitives/context'
-import { createResource } from 'solid-js'
 
-import type { AppDatabase } from '@sunner/ambi/db'
-import { createAppDatabase } from '@sunner/ambi/db'
-
-// export type RxDBProviderParams = {}
+import type { AppDatabaseInstance } from '@sunner/ambi/db'
+import AppDatabase from '@sunner/ambi/db'
 
 export const RxDBContext = createContextProvider<
-  AppDatabase | undefined,
+  AppDatabaseInstance,
   Record<never, never>
->(() => {
-  const [db] = createResource(createAppDatabase)
+>(() => AppDatabase.db, await AppDatabase.init())
 
-  return db()
-})
+export const RxDBProvider = RxDBContext[0]
+
+export const useRxDB = RxDBContext[1]

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -12,5 +12,5 @@ export default defineConfig({
     global: 'window',
     'process.env': process.env,
   },
-  plugins: [solidPlugin(), tsconfigPaths()],
+  plugins: [solidPlugin() as Plugin, tsconfigPaths()],
 })

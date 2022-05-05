@@ -1,11 +1,21 @@
 {
   "common": {
     "actions": {
+      "goToDashboard": "Kembali ke Beranda",
       "login": "Masuk"
     },
     "terms": {
+      "active": "Aktif",
+      "address": "Alamat",
       "email": "Email",
+      "id": "ID",
+      "name": "Nama",
       "password": "Kata sandi"
+    }
+  },
+  "error": {
+    "notFound": {
+      "title": "Halaman tidak ditemukan"
     }
   },
   "mod": {
@@ -13,6 +23,9 @@
       "login": {
         "title": "AMBI: Sistem Inventori"
       }
+    },
+    "dashboard": {
+      "title": "Beranda"
     }
   }
 }
