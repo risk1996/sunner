@@ -1,32 +1,24 @@
-import * as pouchAdapterHttp from 'pouchdb-adapter-http'
-import * as pouchAdapterIdb from 'pouchdb-adapter-idb'
-import type { RxDatabase } from 'rxdb'
-import { addPouchPlugin, createRxDatabase, getRxStoragePouch } from 'rxdb'
+import { Dexie } from 'dexie'
 
-import type { VendorCollection } from '@sunner/ambi/db/vendor'
-import { vendorCollectionCreator } from '@sunner/ambi/db/vendor'
+import VendorModel from '@sunner/ambi/db/vendor'
+import type { UUIDv4 } from '@sunner/ambi/types/uuid'
 
-addPouchPlugin(pouchAdapterIdb)
-addPouchPlugin(pouchAdapterHttp)
+export default class AppDatabase extends Dexie {
+  public readonly vendors!: Dexie.Table<VendorModel, UUIDv4>
 
-export type AppDatabaseCollections = {
-  vendors: VendorCollection
-}
+  public constructor() {
+    super('app_db')
 
-let db: AppDatabase | undefined
-export type AppDatabase = RxDatabase<AppDatabaseCollections>
-export async function createAppDatabase(): Promise<AppDatabase> {
-  if (!db) {
-    db = await createRxDatabase<AppDatabase>({
-      eventReduce: true,
-      name: 'app_db',
-      storage: getRxStoragePouch('idb'),
+    this.version(1).stores({
+      vendors: VendorModel.INDEX,
     })
 
-    await db.waitForLeadership()
-
-    await db.addCollections({ vendors: vendorCollectionCreator })
+    this.vendors.mapToClass(VendorModel)
   }
+}
 
-  return db
+declare module '@sunner/ambi/reactivity/db' {
+  export interface DexieTypes {
+    db: AppDatabase
+  }
 }

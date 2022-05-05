@@ -10,6 +10,8 @@ import type { JSX } from 'solid-js'
 
 import ColorSchemeListener from '@sunner/ambi/components/ColorSchemeListener'
 import { COMMON_DICT } from '@sunner/ambi/constants/i18n'
+import AppDatabase from '@sunner/ambi/db'
+import { DexieProvider } from '@sunner/ambi/reactivity/db'
 import AppRoutes from '@sunner/ambi/routes'
 import Env from '@sunner/ambi/utils/Env'
 
@@ -29,18 +31,20 @@ const keycloakInitOptions: KeycloakInitOptions = {
 export default function App(): JSX.Element {
   return (
     <HopeProvider config={{ initialColorMode: 'system' }}>
-      <ColorSchemeListener />
+      <DexieProvider db={new AppDatabase()}>
+        <ColorSchemeListener />
 
-      <I18nContext.Provider value={i18nContext}>
-        <KeycloakProvider
-          config={keycloakConfig}
-          initOptions={keycloakInitOptions}
-        >
-          <Router>
-            <AppRoutes />
-          </Router>
-        </KeycloakProvider>
-      </I18nContext.Provider>
+        <I18nContext.Provider value={i18nContext}>
+          <KeycloakProvider
+            config={keycloakConfig}
+            initOptions={keycloakInitOptions}
+          >
+            <Router>
+              <AppRoutes />
+            </Router>
+          </KeycloakProvider>
+        </I18nContext.Provider>
+      </DexieProvider>
     </HopeProvider>
   )
 }
